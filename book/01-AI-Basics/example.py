@@ -1,8 +1,19 @@
-def estimate_tokens(text: str) -> int:
-    # Rough English/Chinese mixed estimate for planning, not billing.
-    return max(1, len(text) // 3)
+from collections import Counter
 
-def can_fit(system_prompt: str, user_input: str, limit: int = 8000) -> bool:
-    return estimate_tokens(system_prompt) + estimate_tokens(user_input) < limit
+history = [
+    "AI is prediction",
+    "AI is pattern matching",
+    "AI is prediction",
+    "LLM predicts the next token",
+    "AI is probability",
+]
 
-print(can_fit("You are a careful assistant.", "summarize this document" * 200))
+words = []
+for sentence in history:
+    words.extend(sentence.lower().split())
+
+counter = Counter(words)
+
+print("Most common patterns:")
+for word, count in counter.most_common(5):
+    print(word, count)
