@@ -38,6 +38,28 @@ Build the static site:
 mkdocs build
 ```
 
+Generate the PDF edition:
+
+```bash
+python scripts/build_pdf.py
+```
+
+## Online Version
+
+The GitHub Pages site is configured to publish from the `main` branch:
+
+```text
+https://xiangbuchu77.github.io/AI-Agent-Book/
+```
+
+## PDF Edition
+
+The generated PDF is available at:
+
+```text
+output/pdf/AI-Agent-Book-2026.pdf
+```
+
 ## License
 
 This project is open source. License details will be added later.
