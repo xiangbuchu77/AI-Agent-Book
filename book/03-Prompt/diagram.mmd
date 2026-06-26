@@ -1,15 +1,9 @@
-flowchart LR
-    N0["角色"]
-    N1["任务"]
-    N2["上下文"]
-    N3["约束"]
-    N4["示例"]
-    N5["Schema"]
-    N6["评估"]
-    N0 --> N1
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 -. feedback .-> N1
+flowchart TD
+    A["System Prompt<br/>角色与规则"] --> C["LLM"]
+    B["User Prompt<br/>当前任务"] --> C
+    D["Context<br/>背景资料"] --> C
+    E["Examples<br/>Few-shot示例"] --> C
+    F["Constraints<br/>限制条件"] --> C
+    C --> G["Structured Output<br/>稳定输出"]
+    G --> H["Validation<br/>校验与评估"]
+    H -. feedback .-> A
