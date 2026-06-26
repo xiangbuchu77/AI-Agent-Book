@@ -1,13 +1,8 @@
-flowchart LR
-    N0["输入序列"]
-    N1["Embedding"]
-    N2["Attention"]
-    N3["Decoder Blocks"]
-    N4["概率分布"]
-    N5["采样输出"]
-    N0 --> N1
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 -. feedback .-> N1
+graph TD
+    A[输入句子] --> B[生成 Q K V]
+    B --> C[计算注意力分数]
+    C --> D[Softmax]
+    D --> E[加权 V]
+    E --> F[输出表示]
+    F --> G[后续 Transformer 层]
+    G --> H[生成下一个 token]

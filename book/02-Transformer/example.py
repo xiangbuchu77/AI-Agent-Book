@@ -1,13 +1,20 @@
-import random
+import math
 
-def sample_next(candidates, temperature=0.7):
-    adjusted = [(token, score / max(temperature, 0.01)) for token, score in candidates]
-    total = sum(score for _, score in adjusted)
-    pick = random.random() * total
-    upto = 0
-    for token, score in adjusted:
-        upto += score
-        if upto >= pick:
-            return token
 
-print(sample_next([("safe", 0.7), ("creative", 0.2), ("wild", 0.1)]))
+def softmax(scores):
+    exp_scores = [math.exp(score) for score in scores]
+    total = sum(exp_scores)
+    return [score / total for score in exp_scores]
+
+
+def attention(q, k, v):
+    scores = [q * key for key in k]
+    weights = softmax(scores)
+    return sum(weight * value for weight, value in zip(weights, v))
+
+
+query = 0.9
+keys = [0.1, 0.8, 0.3]
+values = [10, 50, 20]
+
+print(attention(query, keys, values))
