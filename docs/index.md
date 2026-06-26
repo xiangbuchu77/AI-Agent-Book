@@ -9,6 +9,10 @@
 3. 然后进入 Agent，理解工具调用、记忆、状态、规划和执行循环。
 4. 最后通过 LangGraph、MCP、项目实战和系统设计，把能力组合成生产级系统。
 
+## PDF Edition
+
+- [下载 PDF 版本](assets/pdf/AI-Agent-Book-2026.pdf)
+
 ## Chapters
 
 - [00 Preface](00-Preface/index.md)
