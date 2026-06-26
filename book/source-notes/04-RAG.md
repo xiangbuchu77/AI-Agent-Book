@@ -149,7 +149,7 @@ LLM生成答案
 
 ---
 
-## 📊 7. RAG架构图
+# 📊 7. RAG架构图
 
 ```mermaid
 graph TD
@@ -199,7 +199,8 @@ LLM = 开卷考试
 ```python
 def rag(query, docs):
     related_docs = search(docs, query)
-    context = "\n".join(related_docs)
+    context = "
+".join(related_docs)
     return llm(query + context)
 ```
 
@@ -233,77 +234,3 @@ def rag(query, docs):
 - RAG = 检索 + LLM生成
 - Embedding = 文本向量化
 - Vector DB = 相似度搜索
-
----
-
-## Engineering Use Case
-
-企业知识库问答是 RAG 最典型的落地场景。员工问“公司年假是多少天”，系统不应该让 LLM 自由猜，而应该先检索公司制度文档，再把相关片段交给 LLM，最后输出答案和引用来源。
-
----
-
-## Mermaid Diagram
-
-```mermaid
-graph TD
-A[用户问题] --> B[Embedding]
-B --> C[向量数据库]
-C --> D[检索Top-K文档]
-D --> E[拼接Prompt]
-E --> F[LLM生成答案]
-F --> G[引用来源与答案]
-```
-
----
-
-## Python Code
-
-```python
-def search(docs, query):
-    query_terms = set(query.lower().split())
-    scored = []
-    for doc in docs:
-        terms = set(doc.lower().split())
-        score = len(query_terms & terms)
-        scored.append((score, doc))
-    return [doc for score, doc in sorted(scored, reverse=True) if score > 0]
-
-
-def llm(prompt):
-    return "基于资料回答：" + prompt[:120]
-
-
-def rag(query, docs):
-    related_docs = search(docs, query)
-    context = "\n".join(related_docs)
-    prompt = f"问题：{query}\n资料：{context}"
-    return llm(prompt)
-
-
-docs = [
-    "公司 年假 政策 员工 每年 10 天",
-    "报销 需要 发票 和 审批",
-    "AI Agent 使用 RAG 查询 私有知识",
-]
-print(rag("公司 年假 政策", docs))
-```
-
-See also: [example.py](example.py)
-
----
-
-## Quality Checklist
-
-- 能否用一句话解释本章核心概念。
-- 能否画出本章系统流程。
-- 能否运行 Python 示例理解核心机制。
-- 能否说明企业工程场景如何落地。
-- 能否回答本章高频面试题。
-
----
-
-## Navigation
-
-- [Previous](../03-Prompt/index.md)
-- [Next](../05-Agent/index.md)
-

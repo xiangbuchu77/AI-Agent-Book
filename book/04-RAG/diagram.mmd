@@ -1,15 +1,7 @@
-flowchart LR
-    N0["文档"]
-    N1["切分"]
-    N2["Embedding"]
-    N3["向量索引"]
-    N4["检索"]
-    N5["重排序"]
-    N6["回答"]
-    N0 --> N1
-    N1 --> N2
-    N2 --> N3
-    N3 --> N4
-    N4 --> N5
-    N5 --> N6
-    N6 -. feedback .-> N1
+graph TD
+A[用户问题] --> B[Embedding]
+B --> C[向量数据库]
+C --> D[检索Top-K文档]
+D --> E[拼接Prompt]
+E --> F[LLM生成答案]
+F --> G[引用来源与答案]
