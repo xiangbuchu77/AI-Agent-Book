@@ -1,0 +1,13 @@
+flowchart LR
+    N0["Host"]
+    N1["Client"]
+    N2["MCP Server"]
+    N3["Tools"]
+    N4["Resources"]
+    N5["Prompts"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 -. feedback .-> N1

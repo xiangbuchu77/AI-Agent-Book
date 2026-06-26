@@ -1,0 +1,13 @@
+flowchart LR
+    N0["文本"]
+    N1["Token"]
+    N2["Embedding"]
+    N3["上下文"]
+    N4["LLM"]
+    N5["结构化输出"]
+    N0 --> N1
+    N1 --> N2
+    N2 --> N3
+    N3 --> N4
+    N4 --> N5
+    N5 -. feedback .-> N1

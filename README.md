@@ -63,3 +63,12 @@ output/pdf/AI-Agent-Book-2026.pdf
 ## License
 
 This project is open source. License details will be added later.
+
+## Multi-Agent Textbook Project
+
+This repository also includes a complete multi-agent textbook production structure:
+
+- `agents/`: role definitions for Planner, Writer, Diagram, Code, and Reviewer agents.
+- `book/`: complete chapter project with Markdown, Mermaid diagrams, and Python examples.
+- `prompts/`: reusable prompts for each production agent.
+- `pipeline/`: generation contract and quality review process.
